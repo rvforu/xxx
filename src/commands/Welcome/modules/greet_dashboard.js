@@ -252,17 +252,6 @@ export default {
                 }
             });
 
-            const btnCollector = interaction.channel.createMessageComponentCollector({
-                componentType: ComponentType.Button,
-                filter: i =>
-                    i.user.id === interaction.user.id &&
-                    (i.customId === `greet_cfg_toggle_welcome_${guildId}` ||
-                        i.customId === `greet_cfg_toggle_goodbye_${guildId}` ||
-                        i.customId === `greet_cfg_ping_welcome_${guildId}` ||
-                        i.customId === `greet_cfg_ping_goodbye_${guildId}`),
-                time: 600_000,
-            });
-
             btnCollector.on('collect', async btnInteraction => {
                 try {
                     if (!await deferComponent(btnInteraction)) {
